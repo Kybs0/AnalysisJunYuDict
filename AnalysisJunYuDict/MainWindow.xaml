@@ -1,0 +1,72 @@
+﻿<Window x:Class="AnalysisJunYuDict.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnalysisJunYuDict"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="GetDataButton" Content="获取所有数据" Click="GetDataButton_OnClick"
+                Height="30" HorizontalAlignment="Center" Padding="10,4" Margin="10"/>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Id" Margin="6 0 0 0"/>
+            <TextBlock Grid.Column="1" Text="表名" Margin="6 0 0 0"/>
+            <Button Grid.Column="1" Grid.Row="0" x:Name="CopyData0Button" Content="复制0" Click="CopyData0Button_OnClick"
+                    Height="30" HorizontalAlignment="Right" Padding="10,4" VerticalAlignment="Top" Margin="0 -10 0 0"/>
+
+            <TextBlock Grid.Column="2" Text="缩略词" Margin="6 0 0 0"/>
+            <Button Grid.Column="2" Grid.Row="0" x:Name="CopyData1Button" Content="复制1" Click="CopyData1Button_OnClick"
+                    Height="30" HorizontalAlignment="Right" Padding="10,4" VerticalAlignment="Top" Margin="0 -10 0 0"/>
+
+            <TextBlock Grid.Column="3" Text="英语" Margin="6 0 0 0"/>
+            <Button Grid.Column="3" Grid.Row="0" x:Name="CopyData2Button" Content="复制2" Click="CopyData2Button_OnClick"
+                    Height="30" HorizontalAlignment="Right" Padding="10,4" VerticalAlignment="Bottom" Margin="0 -10 0 0"/>
+
+            <TextBlock Grid.Column="4" Text="中文" Margin="6 0 0 0"/>
+            <Button Grid.Column="4" Grid.Row="0" x:Name="CopyData3Button" Content="复制3" Click="CopyData3Button_OnClick"
+                    Height="30" HorizontalAlignment="Right" Padding="10,4" VerticalAlignment="Bottom" Margin="0 -10 0 0"/>
+
+            <TextBlock Grid.Column="5" Text="解释" Margin="6 0 0 0"/>
+            <Button Grid.Column="5" Grid.Row="0" x:Name="CopyData4Button" Content="复制4" Click="CopyData4Button_OnClick"
+                    Height="30" HorizontalAlignment="Right" Padding="10,4" VerticalAlignment="Bottom" Margin="0 -10 0 0"/>
+
+        </Grid>
+        <ListBox Grid.Row="2" x:Name="ResultListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type local:SearchItem}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Id}" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock Grid.Column="1" Text="{Binding TableName}" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Acronym}" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock Grid.Column="3" Text="{Binding English}" ToolTip="{Binding English}" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock Grid.Column="4" Text="{Binding Chinese}" ToolTip="{Binding Chinese}" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock Grid.Column="5" Text="{Binding Explain}" ToolTip="{Binding Explain}" TextTrimming="CharacterEllipsis"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
